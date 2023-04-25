@@ -43,7 +43,7 @@ class NinjaCard extends StatelessWidget {
            SizedBox(height:5.0),
 
             Text(
-              'Alex Mystogan',
+              'Alex Mystogan AM',
               style: TextStyle(
                 color: Colors.amberAccent,
                 letterSpacing: 2.0,
