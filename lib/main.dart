@@ -22,20 +22,75 @@ class _NinjaCardState extends State<NinjaCard> {
         backgroundColor: Colors.grey[850],
         elevation:0.0,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          setState(() {
-            if (ninjalevel<=9){
-              ++ninjalevel;
-            }
-            else ninjalevel = 0;
+      floatingActionButton: Wrap( //will break to another line on overflow
+        direction: Axis.vertical,
+        spacing: 10,
+        alignment: WrapAlignment.spaceBetween,
+        //use vertical to show  on vertical axis
+        children: <Widget>[
+          Container(
+              margin:EdgeInsets.all(10),
+              child: FloatingActionButton(
+                onPressed: (){
+                  setState(() {
+                    if (ninjalevel<=9){
+                      ninjalevel+=1;
+                    }
+                    else {
+                      print('Do Nothing');
+                    }
+                  });
+                  //action code for button 1
+                },
+                child: Icon(Icons.plus_one_outlined),
+              )
+          ), //button first
 
-          });
+          Container(
+              margin:EdgeInsets.all(10),
+              child: FloatingActionButton(
+                onPressed: (){
+                  setState(() {
+                    if (ninjalevel>0){
+                      ninjalevel -=1;
+                    }
+                    else {
+                      print('Do Nothing');
+                    }
+                  });
+                  //action code for button 2
+                },
+                backgroundColor: Colors.deepPurpleAccent,
+                child: Icon(Icons.exposure_minus_1_outlined),
+              )
+          ), // button second
 
-        },
-        child: Icon(Icons.plus_one_outlined),
-        backgroundColor: Colors.blue,
-      ),
+          Container(
+              margin:EdgeInsets.all(10),
+              child: FloatingActionButton(
+                onPressed: (){
+                  setState(() {
+                    if (ninjalevel>0){
+                     ninjalevel = 0;
+                    }
+                    else {
+                      print('Do Nothing');
+                    }
+                  });
+                  //action code for button 3
+                },
+                backgroundColor: Colors.deepOrangeAccent,
+                child: Icon(Icons.lock_reset_outlined),
+              )
+          ), // button third
+
+          // Add more buttons here
+        ],),
+
+
+
+
+
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
         child: Column(
